@@ -1,0 +1,45 @@
+{
+  "name": "angular2-starter",
+  "version": "1.0.0",
+  "description": "angular2 initial",
+  "scripts": {
+    "build": "webpack --progress",
+    "build:prod": "cross-env APP_ENVIRONMENT=production webpack -p --progress",
+    "postinstall": "typings install",
+    "serve": "webpack-dev-server --inline --progress"
+  },
+  "author": "Mario Sanchez",
+  "license": "MIT",
+  "dependencies": {
+    "@angular/common": "2.0.0-rc.4",
+    "@angular/compiler": "2.0.0-rc.4",
+    "@angular/core": "2.0.0-rc.4",
+    "@angular/forms": "0.2.0",
+    "@angular/http": "2.0.0-rc.4",
+    "@angular/platform-browser": "2.0.0-rc.4",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.4",
+    "@angular/router": "3.0.0-beta.1",
+    "core-js": "^2.4.0",
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.6",
+    "zone.js": "0.6.12",
+    "bin": "0.0.0",
+    "nib": "^1.1.0"
+  },
+  "devDependencies": {
+    "concurrently": "^2.0.0",
+    "cross-env": "^1.0.8",
+    "css-loader": "^0.23.1",
+    "html-webpack-plugin": "^2.21.0",
+    "lite-server": "^2.2.0",
+    "raw-loader": "^0.5.1",
+    "style-loader": "^0.13.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^2.1.1",
+    "ts-loader": "^0.8.2",
+    "typescript": "^1.8.10",
+    "typings": "^1.0.4",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
