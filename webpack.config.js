@@ -7,6 +7,16 @@ module.exports = {
         path : './dist',
         filename: 'app.bundle.js'
     },
+
+    /// las extensiones que soporta webpack
+    resolve:{
+        alias: {
+            materializecss: 'materialize-css/dist/css/materialize.css',
+            materialize: 'materialize-css/dist/js/materialize.js',
+        },
+        extensions:['', '.js', '.ts', '.html', '.css', '.styl'],
+
+    },
     module:{
         loaders:[
             {
@@ -17,6 +27,7 @@ module.exports = {
                 test:/\.html$/,
                 loader:'raw-loader'         ///loader para archivos con extension .html
             },
+            { test: /\.css$/,   loader: 'raw-loader' },
             { 
                 test: /\.css$/,             
                 loader: 'style-loader!css-loader'  
@@ -24,7 +35,13 @@ module.exports = {
             {
                 test:/\.styl$/,
                 loader: 'style-loader!css-loader!stylus-loader' //usa css-loader para añadir reglas css  
-            }
+            },
+            {
+                test: /materialize-css\/dist\/js\/materialize\.js/,
+                loader: 'imports?materializecss'
+            },
+            { test: /materialize\.css$/,   loader: 'style-loader!css-loader' },
+            { test: /^((?!materialize).)*\.css$/,   loader: 'raw-loader' },
         ]
     },
      ////////////Plugin para añadir nib a stylus 
@@ -32,13 +49,9 @@ module.exports = {
         use: [ require('nib')() ],
         import: ['~nib/lib/nib/index.styl']
     },
-
-    /// las extensiones que soporta webpack
-    resolve:{
-        extensions:['', '.js', '.ts', '.html', '.css', '.styl']
-    },
     plugins:[
         new HtmlWebpackPlugin({
+            title: 'Cientifico UNL',
             template: './src/index.html'
         }),
         /*Plugin dentro de webpack que permite añadir una variable de entorno a nuestro proyecto
@@ -49,6 +62,6 @@ module.exports = {
             app:{
                 environment:JSON.stringify(process.env.APP_ENVIRONMENT || 'development')
             }
-        }),
+        })
     ]
 } 
